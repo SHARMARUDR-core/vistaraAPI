@@ -1,10 +1,11 @@
 require('dotenv').config()
 const express = require('express')
-const app = express()
+const cors = require('cors')
 const mongoose = require('mongoose')
+const app = express()
 const user = require('./components/user/user')
 const admin = require('./components/admin/admin')
-const cors = require('cors')
+const items = require('./components/items/items')
 
 
 mongoose.connect(process.env.MONGO_URI)
@@ -20,7 +21,8 @@ app.use(express.urlencoded({ extended: true }));// Parses URL-encoded bodies
 
 // routes
 app.use('/admin' , admin)
-app.use('/user', user)
+app.use('/users', user)
+app.use('/items' , items )
 
 
 app.listen(process.env.PORT || 8080, () => console.log(`server is listenting on port 8080 ${process.env.PORT}`))
