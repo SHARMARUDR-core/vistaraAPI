@@ -17,6 +17,7 @@ app.use(cors())
 app.use(express.json()); // Parses JSON request bodies
 app.use(express.urlencoded({ extended: true }));// Parses URL-encoded bodies
 
+
 // routes
 app.use('/admin' , admin)
 app.use('/user', user)
