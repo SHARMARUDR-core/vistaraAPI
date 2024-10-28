@@ -10,4 +10,13 @@ router.get('/', async (req, res) => {
     res.send(data)
 })
 
+
+router.post('/' , async (req ,res) => {
+    const { adminName } = req.body
+    await Admin.create({
+        adminName : adminName
+    })
+    .then(err => console.error(`EROOR :- ${err}`))
+    .then(res.send('Feeling good to see YOU here'))
+})
 module.exports = router
