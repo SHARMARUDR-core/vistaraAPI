@@ -12,11 +12,16 @@ router.get('/', async (req, res) => {
     res.send(data)
 })
 
+router.get('/:id' , async (req ,res) => {
+    const data = await User.find({ _id : req.params.id })
+    res.send(data)
+})
+
 
 router.post('/', async (req, res) => {
     const {userName , Password} = req.body
-    await User.create({userName : userName , Password :  Password})
-    res.send('your input has been added ')
+    const result = await User.create({userName : userName , Password :  Password})
+    res.json(result)
 })
 
 
@@ -28,8 +33,8 @@ router.delete('/' , async (req,res) => {
 
 
 router.put('/' , async (req , res) => {
-    const {userName , Password} = req.body
-    const result = await User.updateOne({userName : userName , Password : Password})
+    const {userName , Password , userID} = req.body
+    const result = await User.findByIdAndUpdate( userID , {userName : userName , Password : Password})
     res.send('Your userName and Password has been updated')
 })
 

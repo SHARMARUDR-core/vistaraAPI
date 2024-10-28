@@ -9,7 +9,7 @@ const orderSchema = new mongoose.Schema({
         type : Number , 
         required : true
     } ,
-    user : {
+    userID : {
         type : mongoose.Schema.Types.ObjectId , 
         ref : 'user' , 
         required : true
