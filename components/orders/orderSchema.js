@@ -1,10 +1,11 @@
+const { populate } = require('dotenv')
 const mongoose = require('mongoose')
 
 const orderSchema = new mongoose.Schema({
-    items : {
+    items : [{
         type : String ,
         required : true
-    } , 
+    } ], 
     total : {
         type : Number , 
         required : true

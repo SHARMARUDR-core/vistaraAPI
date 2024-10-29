@@ -6,7 +6,6 @@ const User = require('./userSchema')
 app.use(express.json());
 app.use(router);
 
-
 router.get('/', async (req, res) => {
     const data = await User.find({})
     res.send(data)

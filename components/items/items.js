@@ -44,7 +44,7 @@ router.put('/' , async (req ,res) => {
 router.delete('/' , async (req ,res) => {
     const { name } = req.body 
     const result = await Item.deleteOne({ name : name })
-    res.send(`${name} has been deleted`)
+    res.send(result)
 })
 
 module.exports = router

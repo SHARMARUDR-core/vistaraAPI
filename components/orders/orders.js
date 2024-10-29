@@ -9,8 +9,12 @@ app.use(router);
 
 
 router.get('/', async (req, res) => {
-    const data = await Order.find({})
-    res.send(data)
+    await Order.find({})
+    .populate({
+      path: 'userID'
+    })
+    .then(Order => console.log(Order))
+    .catch(error => console.error(error));
 })
 
 router.post('/' , async (req, res) => {

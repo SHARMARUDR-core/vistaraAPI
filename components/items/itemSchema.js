@@ -8,8 +8,7 @@ const itemSchema = mongoose.Schema({
     } , 
     price : {
         type : Number , 
-        required : true , 
-        unique : true 
+        required : true 
     } , 
     url : {
         type : String , 
@@ -18,8 +17,7 @@ const itemSchema = mongoose.Schema({
     } , 
     type : {
         type : String , 
-        required : true , 
-        unique  :true 
+        required : true 
     } , 
     description : {
         type : String , 
