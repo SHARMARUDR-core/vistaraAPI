@@ -9,7 +9,7 @@ app.use(router)
 
 router.get('/' , async (req ,res) => {
     const data = await Emails.find({})
-    res.send(data)
+    await res.send(data)
 })
 
 router.post('/' , async (req ,res) => {
