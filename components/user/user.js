@@ -8,11 +8,13 @@ app.use(router);
 
 router.get('/', async (req, res) => {
     const data = await User.find({})
+    .then(err => res.send('eroor occured - you have to login with diffrent user name'))
     res.send(data)
 })
 
 router.get('/:id' , async (req ,res) => {
     const data = await User.find({ _id : req.params.id })
+    .then(err => res.send('Error occured - You are requesting for wrong id '))
     res.send(data)
 })
 
@@ -20,6 +22,7 @@ router.get('/:id' , async (req ,res) => {
 router.post('/', async (req, res) => {
     const {userName , Password} = req.body
     const result = await User.create({userName : userName , Password :  Password})
+    .then(err => res.send('eroor occured - look like some one already login with same user Name and password'))
     res.json(result)
 })
 
@@ -27,6 +30,8 @@ router.post('/', async (req, res) => {
 router.delete('/' , async (req,res) => {
     const {userName , Password} = req.body
     const result = await User.deleteOne({userName : userName})
+    .then(err => res.send('eroor occured - this user is not in our db'))
+
     res.send(result.status)
 })
 
@@ -34,6 +39,7 @@ router.delete('/' , async (req,res) => {
 router.put('/' , async (req , res) => {
     const {userName , Password , userID} = req.body
     const result = await User.findByIdAndUpdate( userID , {userName : userName , Password : Password})
+    .then(err => res.send('try to create new user account'))
     res.send('Your userName and Password has been updated')
 })
 
