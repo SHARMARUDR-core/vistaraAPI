@@ -12,6 +12,6 @@ const LoginSchema = new mongoose.Schema({
     }
 } , { timestamps : true })
 
-const Logins = mongoose.model('Logins' , LoginSchema)
+const Logins = new mongoose.model('Logins' , LoginSchema)
 
 module.exports = Logins
