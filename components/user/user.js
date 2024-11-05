@@ -55,7 +55,7 @@ router.put('/' , async (req , res) => {
 })
 
 
-router.get('/find' , async (req , res) => {
+router.post('/find' , async (req , res) => {
     try{
         const { email , password } = req.body
         await User.findOne({
