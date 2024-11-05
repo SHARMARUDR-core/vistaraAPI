@@ -22,9 +22,11 @@ router.post('/' , async (req , res) => {
             email : email , 
             password : password
         })
+        res.status(201)
     } catch {
-        res.send('Lool like you already login with same id')
+        res.send('Error Occured')
     }
 })
+
 
 module.exports = router
