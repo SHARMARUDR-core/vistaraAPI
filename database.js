@@ -10,6 +10,7 @@ const admin = require('./components/admin/admin')
 const items = require('./components/items/items')
 const order = require('./components/orders/orders')
 const email = require('./components/email/emails')
+const login = require('./components/login/login')
 
 
 // connecting to a mongo db 
@@ -30,6 +31,7 @@ app.use('/users', user)
 app.use('/items' , items )
 app.use('/orders' , order)
 app.use('/email' , email)
+app.use('/login' , login)
 
 
 
