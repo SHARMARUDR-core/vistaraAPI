@@ -27,8 +27,8 @@ router.get('/:id' , async (req ,res) => {
 
 router.post('/', async (req, res) => {
     try{
-        const {userName , Password} = req.body
-        const result = await User.create({userName : userName , Password :  Password})
+        const {userName  , userEmail , Password} = req.body
+        const result = await User.create({userName : userName , userEmail : userEmail, Password :  Password})
         res.json(result)
     } catch {
         res.send('eroor occured - look like some one already login with same user Name and password')
@@ -39,8 +39,8 @@ router.post('/', async (req, res) => {
 
 router.delete('/' , async (req,res) => {
     try{
-        const {userName , Password} = req.body
-        const result = await User.deleteOne({userName : userName})
+        const {userName , userEmail , Password} = req.body
+        const result = await User.deleteOne({userEmail : userEmail})
     } catch {
         res.send('eroor occured - this user is not in our db')
     }
@@ -48,8 +48,8 @@ router.delete('/' , async (req,res) => {
 
 
 router.put('/' , async (req , res) => {
-    const {userName , Password , userID} = req.body
-    const result = await User.findByIdAndUpdate( userID , {userName : userName , Password : Password})
+    const {userName ,userEmail, Password , userID} = req.body
+    const result = await User.findByIdAndUpdate( userID , {userName : userName , userEmail :userEmail, Password : Password})
     .then(err => res.send('try to create new user account'))
     res.send('Your userName and Password has been updated')
 })
