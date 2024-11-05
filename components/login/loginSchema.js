@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const LoginSchema = mongoose.Schema({
+const LoginSchema = new mongoose.Schema({
     email : {
         type : String ,
         required : true ,
