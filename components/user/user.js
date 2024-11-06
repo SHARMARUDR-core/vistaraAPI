@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
     try{
         const {userName  , userEmail , Password} = req.body
         const result = await User.create({userName : userName , userEmail : userEmail, Password :  Password})
-        res.json(result)
+        res.send(result)
     } catch {
         res.send('eroor occured - look like some one already login with same user Name and password')
     }
@@ -62,7 +62,7 @@ router.post('/find' , async (req , res) => {
             userEmail : email , 
             Password : password
         })
-        res.status(201)
+        res.send(201)
     } catch {
         res.send('Error Occured')
     }
