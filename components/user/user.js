@@ -62,7 +62,7 @@ router.post('/find' , async (req , res) => {
             userEmail : email , 
             Password : password
         })
-        res.send(201)
+        res.status(201).json({message:"Successfully Registered"})
     } catch {
         res.send('Error Occured')
     }
