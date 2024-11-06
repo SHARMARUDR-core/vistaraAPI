@@ -1,5 +1,6 @@
 const express = require('express')
 const Logins = require('./loginSchema')
+const { data } = require('autoprefixer')
 const app = express()
 const router = express.Router()
 
@@ -18,15 +19,24 @@ router.get('/' , async (req , res) => {
 router.post('/' , async (req , res) => {
     try{
         const { email , password } = req.body
-        await Logins.create({
+        const data = await Logins.create({
             email : email , 
             password : password
         })
-        res.status(201).json({message : "Successfully Registered"})
+        data.res.status(201).json(data)
     } catch {
         res.send('Error Occured')
     }
 })
 
+router.delete('/' , async (req, res) => {
+    try{
+        const { _id } = req.body 
+        const result = await Logins.deleteById({_id : _id})
+        result.status(201)
+    } catch {
+        res.send('500')
+    }
+})
 
 module.exports = router

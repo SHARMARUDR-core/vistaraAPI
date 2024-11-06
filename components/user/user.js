@@ -41,6 +41,7 @@ router.delete('/' , async (req,res) => {
     try{
         const {userName , userEmail , Password} = req.body
         const result = await User.deleteOne({userEmail : userEmail})
+        result.status(201)
     } catch {
         res.send('eroor occured - this user is not in our db')
     }
