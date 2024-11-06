@@ -32,7 +32,7 @@ router.post('/' , async (req , res) => {
 router.delete('/' , async (req, res) => {
     try{
         const { _id } = req.body 
-        const result = await Logins.deleteById({_id : _id})
+        const result = await Logins.deleteOne({_id : _id})
         result.status(201)
     } catch {
         res.send('500')
