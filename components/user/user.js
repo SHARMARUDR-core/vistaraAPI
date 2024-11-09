@@ -29,9 +29,9 @@ router.post('/', async (req, res) => {
     try{
         const {userName  , userEmail , Password} = req.body
         const result = await User.create({userName : userName , userEmail : userEmail, Password :  Password})
-        res.send(result)
+        res.status(201).json(result)
     } catch {
-        res.send('eroor occured - look like some one already login with same user Name and password')
+        res.status(501)
     }
     
 })

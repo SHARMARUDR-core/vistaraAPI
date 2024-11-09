@@ -6,17 +6,25 @@ const Admin = require('./adminLoginTimeSchema')
 app.use(router);
 
 router.get('/', async (req, res) => {
-    const data = await Admin.find({})
-    res.send(data)
+    try{
+        const data = await Admin.find({})
+        res.status(201).json(data)
+    } catch {
+        res.status(501).send(res.error)
+    }
+    
 })
 
 
 router.post('/' , async (req ,res) => {
-    const { adminName } = req.body
-    await Admin.create({
-        adminName : adminName
-    })
-    .then(err => console.error(`EROOR :- ${err}`))
-    .then(res.send('Feeling good to see YOU here'))
+    try{
+        const { adminName } = req.body
+        await Admin.create({
+            adminName : adminName
+        })
+        res.status(201).send('Feeling good to see YOU here')
+    } catch {
+        res.status(501)
+    }
 })
 module.exports = router
