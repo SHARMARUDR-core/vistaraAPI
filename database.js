@@ -6,7 +6,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const app = express()
 const user = require('./components/user/user')
-// const admin = require('./components/admin/admin')
+const admin = require('./components/admin/admin')
 const items = require('./components/items/items')
 // const order = require('./components/orders/orders')
 // const email = require('./components/email/emails')
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended : true }));// Parses URL-encoded bodies
 
 
 // routes
-// app.use('/admin' , admin)
+app.use('/admin' , admin)
 app.use('/users', user)
 app.use('/items' , items )
 // app.use('/orders' , order)

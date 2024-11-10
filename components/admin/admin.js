@@ -6,12 +6,8 @@ const Admin = require('./adminLoginTimeSchema')
 app.use(router);
 
 router.get('/', async (req, res) => {
-    try{
         const data = await Admin.find({})
         res.status(201).json(data)
-    } catch {
-        res.status(501).send(res.error)
-    }
     
 })
 
