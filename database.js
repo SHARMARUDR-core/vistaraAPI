@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended : true }));// Parses URL-encoded bodies
 
 
 // routes
-app.use('/admin' , admin)
+// app.use('/admin' , admin)
 // app.use('/users', user)
 app.use('/items' , items )
 // app.use('/orders' , order)
