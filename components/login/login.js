@@ -1,15 +1,13 @@
 const express = require('express')
 const Logins = require('./loginSchema')
-const { data } = require('autoprefixer')
 const app = express()
 const router = express.Router()
 
 app.use(router)
 
 router.get('/' , async (req , res) => {
-        const data = await Logins.find({})
-        res.send(data)
-    
+    const data = await Logins.find({})
+    res.send(data)    
 })
 
 router.post('/' , async (req , res) => {
