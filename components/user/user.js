@@ -7,12 +7,8 @@ app.use(express.json());
 app.use(router);
 
 router.get('/', async (req, res) => {
-    try {
         const data = await User.find({});
         res.send(data);
-    } catch (err) {
-        res.status(500).send({ error: 'Database error occurred', details: err.message });
-    }
 });
 
 router.get('/:id' , async (req ,res) => {
