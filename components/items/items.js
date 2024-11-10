@@ -14,27 +14,31 @@ router.get('/' ,async  (req , res) => {
 
 
 router.post('/' , async (req ,res) => {
-    const { name , price , url , type , description } =  req.body
-    const result = await Item.create ({
-        name : name , 
-        price : price , 
-        url : url ,
-        type : type , 
-        description : description
-    })
-    .then(err => console.error(err))
-    .then(console.log)
-    res.send(`${name} has been added `)
+    try{
+        const { name , price , url , type , description } =  req.body
+        console.log(name , price , url , type , description)
+        await Item.create ({
+            name : name , 
+            price : price , 
+            url : url ,
+            type : type , 
+            description : description
+        })
+        res.status(201).json('Your item is added successfully')
+    } catch {
+        res.status(501).json('getting error in adding item')
+    }
+    
 })
 
 
 router.put('/' , async (req ,res) => {
-    const { name , price , url , type , description } =  req.body
+    const { name , price , url , typeOf , description } =  req.body
     const result = await Item.updateOne ({
         name : name , 
         price : price , 
         url : url ,
-        type : type , 
+        type : typeOf , 
         description : description
     })
     res.send(`${name} has been updated`)

@@ -14,12 +14,12 @@ router.get('/' , async (req ,res) => {
 
 router.post('/' , async (req ,res) => {
     const { senderName , senderEmail , message } = req.body 
-    await Emails.create({
+    const result = await Emails.create({
         senderName : senderName , 
         senderEmail : senderEmail , 
         message : message
     })
-    .then(err => res.status(500).json({ error: `Something went wrong! ${err}` }))
+    if (result.errord) res.status(501).json('server error')
 
     res.send('Thankyou for your response')
 })
