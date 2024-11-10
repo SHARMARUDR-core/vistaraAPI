@@ -7,12 +7,8 @@ const router = express.Router()
 app.use(router)
 
 router.get('/' , async (req , res) => {
-    try{
         const data = await Logins.find({})
         res.send(data)
-    } catch{
-        res.send('Error Occured')
-    }
     
 })
 

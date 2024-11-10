@@ -10,7 +10,7 @@ const admin = require('./components/admin/admin')
 const items = require('./components/items/items')
 // const order = require('./components/orders/orders')
 const email = require('./components/email/emails')
-// const login = require('./components/login/login')
+const login = require('./components/login/login')
 
 
 // connecting to a mongo db 
