@@ -55,17 +55,4 @@ router.put('/' , async (req , res) => {
     res.send('Your userName and Password has been updated')
 })
 
-
-router.post('/find' , async (req , res) => {
-    try{
-        const { email , password } = req.body
-        await User.findOne({
-            userEmail : email , 
-            Password : password
-        })
-        res.status(201).json({message:"Successfully Registered"})
-    } catch {
-        res.send('Error Occured')
-    }
-})
 module.exports = router
