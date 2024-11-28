@@ -24,12 +24,13 @@ router.get('/:id' , async (req ,res) => {
 router.post('/', async (req, res) => {
     try{
         const {userName  , userEmail , Password} = req.body
+        console.log(userName)
         const result = await User.create({userName : userName , userEmail : userEmail, Password :  Password})
+        console.log(result)
         res.status(201).json(result)
     } catch {
         res.status(501)
     }
-    
 })
 
 
