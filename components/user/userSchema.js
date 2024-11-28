@@ -12,8 +12,7 @@ const userSchema = new mongoose.Schema({
   } ,
   Password : {
     type : String , 
-    required : true , 
-    unique : true 
+    required : true 
   } ,
   orderID : {
     type : mongoose.Schema.Types.ObjectId , 
