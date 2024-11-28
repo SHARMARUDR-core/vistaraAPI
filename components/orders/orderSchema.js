@@ -5,14 +5,14 @@ const orderSchema = new mongoose.Schema({
     items : [{
         type : String ,
         required : true
-    } ], 
+    }], 
     total : {
         type : Number , 
         required : true
     } ,
     userID : {
         type : mongoose.Schema.Types.ObjectId , 
-        ref : 'user' , 
+        ref : 'Users' , 
         required : true
     }
 } , { timestamps : true })

@@ -8,8 +8,7 @@ const itemSchema = new mongoose.Schema({
     }, 
     price: {
         type: Number, 
-        required: true,
-        min: 100
+        required: true
     }, 
     url: {
         type: String, 
@@ -28,5 +27,6 @@ const itemSchema = new mongoose.Schema({
 });
 
 const Item = mongoose.model('Item', itemSchema);
+
 
 module.exports = Item;

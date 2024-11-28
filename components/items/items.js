@@ -13,23 +13,27 @@ router.get('/' ,async  (req , res) => {
 })
 
 
-router.post('/' , async (req ,res) => {
-    try{
-        const { name , price , url , type , description } =  req.body
-        console.log(name , price , url , type , description)
-        await Item.create ({
-            name : name , 
-            price : price , 
-            url : url ,
-            type : type , 
-            description : description
-        })
-        res.status(201).json('Your item is added successfully')
-    } catch {
-        res.status(501).json('getting error in adding item')
+router.post('/', async (req, res) => {
+    try {
+        const { name, price, url, type, description } = req.body;
+
+        // Logging received data
+        console.log(name, price);
+
+        // Create the item
+        const newItem = await Item.create(req.body)
+
+        // Responding with success message and item details
+        res.status(201).json({ message: 'Your item is added successfully', item: newItem });
+    } catch (err) {
+        // Logging the error
+        console.error('Error adding item:', err);
+
+        // Sending error response
+        res.status(500).json({ message: 'Error adding item', error: err.message });
     }
-    
-})
+});
+
 
 
 router.put('/' , async (req ,res) => {
