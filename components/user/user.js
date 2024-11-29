@@ -4,8 +4,6 @@ const express = require('express')
 const router = express.Router()
 const app = express()
 const User = require('./userSchema')
-const nodemailer = require('nodemailer');
-const { IoEarSharp } = require('react-icons/io5')
 
 app.use(express.json());
 app.use(router);
@@ -58,7 +56,7 @@ router.post('/', async (req, res) => {
         //     }
         //   });
           const result =  User.create({userName : userName , userEmail : userEmail, Password :  Password})    
-          res.send(201).json(result)    
+          res.send(201) 
     } catch {
         res.status(501)
     }
