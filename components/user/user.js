@@ -29,34 +29,34 @@ router.post('/', async (req, res) => {
     try{
         const {userName  , userEmail , Password} = req.body
 
-        // create a transporter
-        const transporter = nodemailer.createTransport({
-            service: 'gmail', // Use your email service (e.g., Gmail, Outlook, etc.)
-            auth: {
-              user: process.env.EMAIL_USER, // Your email
-              pass:  process.env.EMAIL_PASS, // Your email password or app-specific password
-            },
-          });
+        // // create a transporter
+        // const transporter = nodemailer.createTransport({
+        //     service: 'gmail', // Use your email service (e.g., Gmail, Outlook, etc.)
+        //     auth: {
+        //       user: process.env.EMAIL_USER, // Your email
+        //       pass:  process.env.EMAIL_PASS, // Your email password or app-specific password
+        //     },
+        //   });
           
 
-          // mail options
-          const mailOptions = {
-            from:process.env.EMAIL_USER , // Sender's email
-            to: userEmail, // Receiver's email
-            subject: 'Hello from Victara', // Email subject
-            text: 'This is a test email sent to check your valid or not', // Plain text body
-            html: '<b>This is a test email sent to check your valid or not</b>', // HTML body
-          };
+        //   // mail options
+        //   const mailOptions = {
+        //     from:process.env.EMAIL_USER , // Sender's email
+        //     to: userEmail, // Receiver's email
+        //     subject: 'Hello from Victara', // Email subject
+        //     text: 'This is a test email sent to check your valid or not', // Plain text body
+        //     html: '<b>This is a test email sent to check your valid or not</b>', // HTML body
+        //   };
           
-        //   send email
-          transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-              console.log('Error occurred:', error);
-              res.status(301).send('getting error in send email')
-            } else {
-              console.log('Email sent:', info.response);
-            }
-          });
+        // //   send email
+        //   transporter.sendMail(mailOptions, (error, info) => {
+        //     if (error) {
+        //       console.log('Error occurred:', error);
+        //       res.status(301).send('getting error in send email')
+        //     } else {
+        //       console.log('Email sent:', info.response);
+        //     }
+        //   });
           const result =  User.create({userName : userName , userEmail : userEmail, Password :  Password})    
           res.send(201).json(result)    
     } catch {
