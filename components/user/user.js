@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
         //       console.log('Email sent:', info.response);
         //     }
         //   });
-          const result =  User.create({userName : userName , userEmail : userEmail, Password :  Password})    
+          const result = await User.create({userName : userName , userEmail : userEmail, Password :  Password})    
           res.send(201) 
     } catch {
         res.status(501)
